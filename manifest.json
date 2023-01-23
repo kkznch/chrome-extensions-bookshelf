@@ -1,0 +1,12 @@
+{
+  "name": "MyBookshelf",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Sample Chrome Extension",
+  "permissions": [
+    "bookmarks"
+  ],
+  "chrome_url_overrides" : {
+    "newtab": "./dist/index.html"
+  }
+}

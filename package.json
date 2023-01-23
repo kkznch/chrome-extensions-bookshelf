@@ -1,0 +1,32 @@
+{
+  "name": "template-react-for-inspection",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/kkznch/template-react-for-inspection",
+  "author": "kkznch <kkznch710md@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack --config webpack.config.js --watch",
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@types/chrome": "^0.0.210",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "framer-motion": "^9.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
