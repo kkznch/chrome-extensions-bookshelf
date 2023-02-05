@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import { Bookshelf, type BookMarkTreeNode } from './Bookshelf';
-import { Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Flex,
+  IconButton,
+  useColorMode,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 type Bookmarks = {
   bookmarkBarBookmarks: BookMarkTreeNode[];
@@ -10,6 +17,8 @@ type Bookmarks = {
 };
 
 const App: FC = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const [bookmarks, setBookmarks] = useState<Bookmarks>({
     bookmarkBarBookmarks: [],
     bookmarkBarFolders: [],
@@ -34,34 +43,47 @@ const App: FC = () => {
   }, []);
 
   return (
-    <Wrap py='32px' px='24px' spacing='24px'>
-      {bookmarks.bookmarkBarBookmarks.length > 0 && (
-        <WrapItem>
-          <Bookshelf
-            title='Bookmarks Bar'
-            bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
-        </WrapItem>
-      )}
-      {bookmarks.bookmarkBarFolders.map((item) => {
-        return (
-          item.children != null &&
-          item.children.length > 0 && (
-            <WrapItem>
-              <Bookshelf
-                title={item.title}
-                bookmarks={item.children}></Bookshelf>
-            </WrapItem>
-          )
-        );
-      })}
-      {bookmarks.otherBookmarks.length > 0 && (
-        <WrapItem>
-          <Bookshelf
-            title='Other Bookmarks'
-            bookmarks={bookmarks.otherBookmarks}></Bookshelf>
-        </WrapItem>
-      )}
-    </Wrap>
+    <>
+      <Flex
+        p='8px'
+        justifyContent='end'
+        borderBottom='1px'
+        borderColor='gray.200'>
+        <IconButton
+          aria-label='a'
+          icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
+          onClick={() => toggleColorMode()}
+        />
+      </Flex>
+      <Wrap py='16px' px='24px' spacing='24px'>
+        {bookmarks.bookmarkBarBookmarks.length > 0 && (
+          <WrapItem>
+            <Bookshelf
+              title='Bookmarks Bar'
+              bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
+          </WrapItem>
+        )}
+        {bookmarks.bookmarkBarFolders.map((item) => {
+          return (
+            item.children != null &&
+            item.children.length > 0 && (
+              <WrapItem>
+                <Bookshelf
+                  title={item.title}
+                  bookmarks={item.children}></Bookshelf>
+              </WrapItem>
+            )
+          );
+        })}
+        {bookmarks.otherBookmarks.length > 0 && (
+          <WrapItem>
+            <Bookshelf
+              title='Other Bookmarks'
+              bookmarks={bookmarks.otherBookmarks}></Bookshelf>
+          </WrapItem>
+        )}
+      </Wrap>
+    </>
   );
 };
 
