@@ -3,10 +3,10 @@ import type { FC } from 'react';
 import { Bookshelf, type BookMarkTreeNode } from './Bookshelf';
 import {
   Flex,
+  Grid,
+  GridItem,
   IconButton,
   useColorMode,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
@@ -55,34 +55,38 @@ const App: FC = () => {
           onClick={() => toggleColorMode()}
         />
       </Flex>
-      <Wrap py='16px' px='24px' spacing='24px'>
+      <Grid
+        py='16px'
+        px='24px'
+        gap='16px'
+        templateColumns='repeat(auto-fill, minmax(256px, min-content))'>
         {bookmarks.bookmarkBarBookmarks.length > 0 && (
-          <WrapItem>
+          <GridItem>
             <Bookshelf
               title='Bookmarks Bar'
               bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
-          </WrapItem>
+          </GridItem>
         )}
         {bookmarks.bookmarkBarFolders.map((item) => {
           return (
             item.children != null &&
             item.children.length > 0 && (
-              <WrapItem>
+              <GridItem>
                 <Bookshelf
                   title={item.title}
                   bookmarks={item.children}></Bookshelf>
-              </WrapItem>
+              </GridItem>
             )
           );
         })}
         {bookmarks.otherBookmarks.length > 0 && (
-          <WrapItem>
+          <GridItem>
             <Bookshelf
               title='Other Bookmarks'
               bookmarks={bookmarks.otherBookmarks}></Bookshelf>
-          </WrapItem>
+          </GridItem>
         )}
-      </Wrap>
+      </Grid>
     </>
   );
 };
