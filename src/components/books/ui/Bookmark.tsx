@@ -20,8 +20,6 @@ export const Bookmark: FC<BookmarkProps> = ({ title, url }) => {
     return getFaviconUrl(url);
   }, [url]);
 
-  console.log(faviconUrl);
-
   return (
     <ListItem>
       <Link href={url}>
