@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Bookshelf, type BookMarkTreeNode } from './Bookshelf';
+import { Bookshelf, type BookMarkTreeNode } from '../ui';
 import {
   Flex,
   Grid,
@@ -16,7 +16,8 @@ type Bookmarks = {
   otherBookmarks: BookMarkTreeNode[];
 };
 
-const App: FC = () => {
+
+export const Index = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const [bookmarks, setBookmarks] = useState<Bookmarks>({
@@ -41,14 +42,14 @@ const App: FC = () => {
       });
     });
   }, []);
-
   return (
     <>
       <Flex
         p='8px'
         justifyContent='end'
         borderBottom='1px'
-        borderColor='gray.200'>
+        borderColor='gray.200'
+      >
         <IconButton
           aria-label='a'
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
@@ -59,12 +60,14 @@ const App: FC = () => {
         py='16px'
         px='24px'
         gap='16px'
-        templateColumns='repeat(auto-fill, minmax(256px, min-content))'>
+        templateColumns='repeat(auto-fill, minmax(256px, min-content))'
+      >
         {bookmarks.bookmarkBarBookmarks.length > 0 && (
           <GridItem>
             <Bookshelf
               title='Bookmarks Bar'
-              bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
+              bookmarks={bookmarks.bookmarkBarBookmarks}
+            ></Bookshelf>
           </GridItem>
         )}
         {bookmarks.bookmarkBarFolders.map((item) => {
@@ -74,7 +77,8 @@ const App: FC = () => {
               <GridItem>
                 <Bookshelf
                   title={item.title}
-                  bookmarks={item.children}></Bookshelf>
+                  bookmarks={item.children}
+                ></Bookshelf>
               </GridItem>
             )
           );
@@ -83,12 +87,11 @@ const App: FC = () => {
           <GridItem>
             <Bookshelf
               title='Other Bookmarks'
-              bookmarks={bookmarks.otherBookmarks}></Bookshelf>
+              bookmarks={bookmarks.otherBookmarks}
+            ></Bookshelf>
           </GridItem>
         )}
       </Grid>
     </>
   );
 };
-
-export default App;
