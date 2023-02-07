@@ -1,4 +1,4 @@
-export { Bookmark } from './Bookmark';
-export { Bookshelf } from './Bookshelf';
-export type { BookMarkTreeNode } from './Bookshelf';
-export { Folder } from './Folder';
+export { Bookmark } from '@/components/books/ui/Bookmark';
+export { Bookshelf } from '@/components/books/ui/Bookshelf';
+export type { BookMarkTreeNode } from '@/components/books/ui/Bookshelf';
+export { Folder } from '@/components/books/ui/Folder';
