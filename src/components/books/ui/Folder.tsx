@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
-import { HStack, Image, ListIcon, ListItem, Text } from '@chakra-ui/react';
+import { HStack, ListItem, Text } from '@chakra-ui/react';
 import { FaFolder } from 'react-icons/fa';
 
 type FolderProps = {
