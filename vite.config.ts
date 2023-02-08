@@ -10,7 +10,7 @@ const manifest = defineManifest({
   description: 'Sample Chrome Extension',
   permissions: ['bookmarks', 'favicon'],
   chrome_url_overrides: {
-    newtab: './index.html',
+    newtab: 'index.html',
   },
 });
 
