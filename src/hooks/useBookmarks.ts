@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useColorMode } from '@chakra-ui/react';
 import { BookMarkTreeNode } from '@/components/books/ui';
 
 type Bookmarks = {
@@ -9,8 +8,6 @@ type Bookmarks = {
 };
 
 export const useBookmarks = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   const [bookmarks, setBookmarks] = useState<Bookmarks>({
     bookmarkBarBookmarks: [],
     bookmarkBarFolders: [],
@@ -35,8 +32,6 @@ export const useBookmarks = () => {
   }, []);
 
   return {
-    colorMode,
-    toggleColorMode,
     bookmarks,
   };
 };

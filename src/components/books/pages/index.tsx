@@ -1,11 +1,18 @@
 import React from 'react';
 import { Bookshelf } from '@/components/books/ui';
-import { Flex, Grid, GridItem, IconButton } from '@chakra-ui/react';
+import {
+  Flex,
+  Grid,
+  GridItem,
+  IconButton,
+  useColorMode,
+} from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useBookmarks } from '@/hooks/useBookmarks';
 
 export const Index = () => {
-  const { colorMode, toggleColorMode, bookmarks } = useBookmarks();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { bookmarks } = useBookmarks();
   return (
     <>
       <Flex
