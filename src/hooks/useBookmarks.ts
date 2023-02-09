@@ -8,7 +8,7 @@ type Bookmarks = {
   otherBookmarks: BookMarkTreeNode[];
 };
 
-export const useBooks = () => {
+export const useBookmarks = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const [bookmarks, setBookmarks] = useState<Bookmarks>({

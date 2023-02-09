@@ -2,18 +2,17 @@ import React from 'react';
 import { Bookshelf } from '@/components/books/ui';
 import { Flex, Grid, GridItem, IconButton } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { useBooks } from '@/hooks/useBooks';
+import { useBookmarks } from '@/hooks/useBookmarks';
 
 export const Index = () => {
-  const { colorMode, toggleColorMode, bookmarks } = useBooks();
+  const { colorMode, toggleColorMode, bookmarks } = useBookmarks();
   return (
     <>
       <Flex
         p='8px'
         justifyContent='end'
         borderBottom='1px'
-        borderColor='gray.200'
-      >
+        borderColor='gray.200'>
         <IconButton
           aria-label='a'
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
@@ -24,14 +23,12 @@ export const Index = () => {
         py='16px'
         px='24px'
         gap='16px'
-        templateColumns='repeat(auto-fill, minmax(256px, min-content))'
-      >
+        templateColumns='repeat(auto-fill, minmax(256px, min-content))'>
         {bookmarks.bookmarkBarBookmarks.length > 0 && (
           <GridItem>
             <Bookshelf
               title='Bookmarks Bar'
-              bookmarks={bookmarks.bookmarkBarBookmarks}
-            ></Bookshelf>
+              bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
           </GridItem>
         )}
         {bookmarks.bookmarkBarFolders.map((item) => {
@@ -41,8 +38,7 @@ export const Index = () => {
               <GridItem>
                 <Bookshelf
                   title={item.title}
-                  bookmarks={item.children}
-                ></Bookshelf>
+                  bookmarks={item.children}></Bookshelf>
               </GridItem>
             )
           );
@@ -51,8 +47,7 @@ export const Index = () => {
           <GridItem>
             <Bookshelf
               title='Other Bookmarks'
-              bookmarks={bookmarks.otherBookmarks}
-            ></Bookshelf>
+              bookmarks={bookmarks.otherBookmarks}></Bookshelf>
           </GridItem>
         )}
       </Grid>
