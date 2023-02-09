@@ -3,8 +3,8 @@ import type { FC } from 'react';
 import { Card, CardHeader, CardBody, List, Heading } from '@chakra-ui/react';
 import { Bookmark } from './Bookmark';
 import { Folder } from './Folder';
+import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 
-export type BookMarkTreeNode = chrome.bookmarks.BookmarkTreeNode;
 type BookshelfProps = {
   title: string;
   bookmarks: BookMarkTreeNode[];

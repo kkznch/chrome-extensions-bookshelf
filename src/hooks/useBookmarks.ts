@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { BookMarkTreeNode } from '@/components/books/ui';
+
+export type BookMarkTreeNode = chrome.bookmarks.BookmarkTreeNode;
 
 type Bookmarks = {
   bookmarkBarBookmarks: BookMarkTreeNode[];

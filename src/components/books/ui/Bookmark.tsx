@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react';
 import type { FC } from 'react';
 import { HStack, Image, Link, ListItem, Text } from '@chakra-ui/react';
+import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 
-type BookmarkProps = {
-  title: string;
-  url?: string;
-};
+type BookmarkProps = BookMarkTreeNode;
 
 const getFaviconUrl = (u: string): string => {
   const url = new URL(chrome.runtime.getURL('/_favicon/'));

@@ -2,10 +2,9 @@ import React from 'react';
 import type { FC } from 'react';
 import { HStack, ListItem, Text } from '@chakra-ui/react';
 import { FaFolder } from 'react-icons/fa';
+import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 
-type FolderProps = {
-  title: string;
-};
+type FolderProps = BookMarkTreeNode;
 
 export const Folder: FC<FolderProps> = ({ title }) => {
   return (
