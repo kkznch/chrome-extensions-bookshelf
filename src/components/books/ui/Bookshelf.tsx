@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { FC } from 'react';
 import { Card, CardHeader, CardBody, List, Heading } from '@chakra-ui/react';
 import { Bookmark } from './Bookmark';
 import { Folder } from './Folder';
 import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 
-type BookshelfProps = {
-  title: string;
-  bookmarks: BookMarkTreeNode[];
-};
+type BookshelfProps = BookMarkTreeNode;
 
-export const Bookshelf: FC<BookshelfProps> = ({ title, bookmarks }) => {
+export const Bookshelf: FC<BookshelfProps> = ({ title, children }) => {
+  // const [] = useState<BookMarkTreeNode[]>([]);
+
   return (
     <Card size='sm' maxWidth='256px' minWidth='256px'>
       <CardHeader>
@@ -20,8 +19,8 @@ export const Bookshelf: FC<BookshelfProps> = ({ title, bookmarks }) => {
       </CardHeader>
       <CardBody>
         <List spacing='1'>
-          {bookmarks
-            .slice()
+          {children
+            ?.slice()
             .sort((a, b) => {
               // index の昇順にする
               if (a.index != null && b.index != null) {

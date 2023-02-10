@@ -31,11 +31,9 @@ export const Index = () => {
         px='24px'
         gap='16px'
         templateColumns='repeat(auto-fill, minmax(256px, min-content))'>
-        {bookmarks.bookmarkBarBookmarks.length > 0 && (
+        {bookmarks.bookmarkBarBookmarks != null && (
           <GridItem>
-            <Bookshelf
-              title='Bookmarks Bar'
-              bookmarks={bookmarks.bookmarkBarBookmarks}></Bookshelf>
+            <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
           </GridItem>
         )}
         {bookmarks.bookmarkBarFolders.map((item) => {
@@ -43,18 +41,14 @@ export const Index = () => {
             item.children != null &&
             item.children.length > 0 && (
               <GridItem key={item.id}>
-                <Bookshelf
-                  title={item.title}
-                  bookmarks={item.children}></Bookshelf>
+                <Bookshelf {...item} />
               </GridItem>
             )
           );
         })}
-        {bookmarks.otherBookmarks.length > 0 && (
+        {bookmarks.otherBookmarks != null && (
           <GridItem>
-            <Bookshelf
-              title='Other Bookmarks'
-              bookmarks={bookmarks.otherBookmarks}></Bookshelf>
+            <Bookshelf {...bookmarks.otherBookmarks} />
           </GridItem>
         )}
       </Grid>
