@@ -31,9 +31,9 @@ export const Bookshelf: FC<BookshelfProps> = ({ title, bookmarks }) => {
             })
             .map((item) =>
               item.children != null ? (
-                <Folder title={item.title} />
+                <Folder key={item.id} {...item} />
               ) : (
-                <Bookmark title={item.title} url={item.url} />
+                <Bookmark key={item.id} {...item} />
               )
             )}
         </List>

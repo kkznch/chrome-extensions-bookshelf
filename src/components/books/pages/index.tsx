@@ -42,7 +42,7 @@ export const Index = () => {
           return (
             item.children != null &&
             item.children.length > 0 && (
-              <GridItem>
+              <GridItem key={item.id}>
                 <Bookshelf
                   title={item.title}
                   bookmarks={item.children}></Bookshelf>
