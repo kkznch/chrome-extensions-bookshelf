@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import type { FC } from 'react';
-import { HStack, Image, Link, ListItem, Text } from '@chakra-ui/react';
+import { HStack, Image, Link, Text } from '@chakra-ui/react';
 import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 
 type BookmarkProps = BookMarkTreeNode;
@@ -19,13 +19,11 @@ export const Bookmark: FC<BookmarkProps> = ({ title, url }) => {
   }, [url]);
 
   return (
-    <ListItem>
-      <Link href={url}>
-        <HStack>
-          <Image src={faviconUrl} boxSize='16px' />
-          <Text noOfLines={1}>{title}</Text>
-        </HStack>
-      </Link>
-    </ListItem>
+    <Link href={url}>
+      <HStack>
+        <Image src={faviconUrl} boxSize='16px' />
+        <Text noOfLines={1}>{title}</Text>
+      </HStack>
+    </Link>
   );
 };
