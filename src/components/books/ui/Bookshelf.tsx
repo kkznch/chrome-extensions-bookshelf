@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 import type { FC } from 'react';
 import {
   Card,
@@ -6,7 +6,6 @@ import {
   CardBody,
   List,
   Heading,
-  Button,
   ListItem,
   HStack,
   IconButton,
@@ -15,29 +14,23 @@ import { Bookmark } from './Bookmark';
 import { Folder } from './Folder';
 import { BookMarkTreeNode } from '@/hooks/useBookmarks';
 import { ArrowLeftIcon } from '@chakra-ui/icons';
+import { useFolders } from '@/hooks/useFolders';
 
 type BookshelfProps = BookMarkTreeNode;
 
 export const Bookshelf: FC<BookshelfProps> = (item) => {
-  const [folders, setFolders] = useState<BookMarkTreeNode[]>([item]);
-  const openSelectedFolder = useCallback(
-    (item: BookMarkTreeNode) => {
-      setFolders([...folders, item]);
-    },
-    [folders]
-  );
-  const backToParentFolder = useCallback(() => {
-    if (folders.length <= 1) return;
-    setFolders(folders.slice(0, folders.length - 1));
-  }, [folders]);
-
-  const currentFolder = useMemo(() => folders.slice(-1)[0], [folders]);
+  const {
+    openSelectedFolder,
+    backToParentFolder,
+    currentFolder,
+    isRootFolder,
+  } = useFolders(item);
 
   return (
     <Card size='sm' maxWidth='256px' minWidth='256px'>
       <CardHeader>
         <HStack h='24px'>
-          {folders.length > 1 ? (
+          {!isRootFolder ? (
             <IconButton
               icon={<ArrowLeftIcon />}
               onClick={backToParentFolder}
