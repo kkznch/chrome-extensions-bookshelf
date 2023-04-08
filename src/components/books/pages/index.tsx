@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bookshelf } from '@/components/books/ui';
 import {
+  Box,
   Flex,
   Grid,
   GridItem,
@@ -13,45 +14,42 @@ import { useBookmarks } from '@/hooks/useBookmarks';
 export const Index = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { bookmarks } = useBookmarks();
+
   return (
     <>
       <Flex
         p='8px'
         justifyContent='end'
         borderBottom='1px'
-        borderColor='gray.200'>
+        borderColor='gray.200'
+      >
         <IconButton
           aria-label='a'
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
           onClick={() => toggleColorMode()}
         />
       </Flex>
-      <Grid
+      <Box
         py='16px'
         px='24px'
-        gap='16px'
-        templateColumns='repeat(auto-fill, minmax(256px, min-content))'>
+        textAlign='center'
+        sx={{
+          columnCount: [1, 2, 3, 4, 5],
+        }}
+      >
         {bookmarks.bookmarkBarBookmarks != null && (
-          <GridItem>
-            <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
-          </GridItem>
+          <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
         )}
         {bookmarks.bookmarkBarFolders.map((item) => {
           return (
             item.children != null &&
-            item.children.length > 0 && (
-              <GridItem key={item.id}>
-                <Bookshelf {...item} />
-              </GridItem>
-            )
+            item.children.length > 0 && <Bookshelf key={item.id} {...item} />
           );
         })}
         {bookmarks.otherBookmarks != null && (
-          <GridItem>
-            <Bookshelf {...bookmarks.otherBookmarks} />
-          </GridItem>
+          <Bookshelf {...bookmarks.otherBookmarks} />
         )}
-      </Grid>
+      </Box>
     </>
   );
 };

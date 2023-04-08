@@ -27,7 +27,13 @@ export const Bookshelf: FC<BookshelfProps> = (item) => {
   } = useFolders(item);
 
   return (
-    <Card size='sm' maxWidth='256px' minWidth='256px'>
+    <Card
+      display='inline-block'
+      size='sm'
+      maxWidth='256px'
+      minWidth='256px'
+      mb='16px'
+    >
       <CardHeader>
         <HStack h='24px'>
           {!isRootFolder ? (
@@ -61,7 +67,8 @@ export const Bookshelf: FC<BookshelfProps> = (item) => {
                   key={item.id}
                   onClick={() => openSelectedFolder(item)}
                   _hover={{ textDecoration: 'underline' }}
-                  cursor='pointer'>
+                  cursor='pointer'
+                >
                   <Folder {...item} />
                 </ListItem>
               ) : (
