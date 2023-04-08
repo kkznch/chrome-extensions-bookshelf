@@ -28,18 +28,22 @@ export const Index = () => {
         sx={{
           columnCount: [1, 2, 3, 4, 5],
         }}>
-        {bookmarks.bookmarkBarBookmarks != null && (
-          <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
-        )}
+        {bookmarks.bookmarkBarBookmarks != null &&
+          bookmarks.bookmarkBarBookmarks.children != null &&
+          bookmarks.bookmarkBarBookmarks.children.length > 0 && (
+            <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
+          )}
         {bookmarks.bookmarkBarFolders.map((item) => {
           return (
             item.children != null &&
             item.children.length > 0 && <Bookshelf key={item.id} {...item} />
           );
         })}
-        {bookmarks.otherBookmarks != null && (
-          <Bookshelf {...bookmarks.otherBookmarks} />
-        )}
+        {bookmarks.otherBookmarks != null &&
+          bookmarks.otherBookmarks.children != null &&
+          bookmarks.otherBookmarks.children.length > 0 && (
+            <Bookshelf {...bookmarks.otherBookmarks} />
+          )}
       </Box>
     </>
   );
