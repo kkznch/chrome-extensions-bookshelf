@@ -1,13 +1,6 @@
 import React from 'react';
 import { Bookshelf } from '@/components/books/ui';
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  IconButton,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Box, Flex, IconButton, useColorMode } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useBookmarks } from '@/hooks/useBookmarks';
 
@@ -21,8 +14,7 @@ export const Index = () => {
         p='8px'
         justifyContent='end'
         borderBottom='1px'
-        borderColor='gray.200'
-      >
+        borderColor='gray.200'>
         <IconButton
           aria-label='a'
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
@@ -35,8 +27,7 @@ export const Index = () => {
         textAlign='center'
         sx={{
           columnCount: [1, 2, 3, 4, 5],
-        }}
-      >
+        }}>
         {bookmarks.bookmarkBarBookmarks != null && (
           <Bookshelf {...bookmarks.bookmarkBarBookmarks} />
         )}

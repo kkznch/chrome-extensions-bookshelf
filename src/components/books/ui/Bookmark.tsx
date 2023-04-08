@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import type { FC } from 'react';
 import { HStack, Image, Link, Text } from '@chakra-ui/react';
 import { BookMarkTreeNode } from '@/hooks/useBookmarks';
