@@ -2,10 +2,8 @@ import { useMemo } from 'react';
 
 const getFaviconUrl = (u: string): string => {
   const url = new URL(u);
-
-  const faviconUrl = new URL(chrome.runtime.getURL('/_favicon/'));
-  faviconUrl.searchParams.set('pageUrl', url.origin);
-  faviconUrl.searchParams.set('size', '32');
+  const faviconUrl = new URL('https://www.google.com/s2/favicons');
+  faviconUrl.searchParams.set('domain', url.origin);
 
   return faviconUrl.toString();
 };
