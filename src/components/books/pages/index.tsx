@@ -1,20 +1,43 @@
 import React from 'react';
 import { Bookshelf } from '@/components/books/ui';
-import { Box, Flex, IconButton, useColorMode } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  IconButton,
+  useColorMode,
+  Switch,
+  FormControl,
+  FormLabel,
+} from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useBookmarks } from '@/hooks/useBookmarks';
+import { useOpenNewTab } from '@/hooks/useOpenNewTab';
 
 export const Index = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { bookmarks } = useBookmarks();
+  const { openInNewTab, toggleOpenNewTab } = useOpenNewTab();
 
   return (
     <>
       <Flex
         p='8px'
+        gap='4'
         justifyContent='end'
+        alignItems='center'
         borderBottom='1px'
         borderColor='gray.200'>
+        <FormControl display='flex' alignItems='center' width='fit-content'>
+          <FormLabel htmlFor='new-tab-switch' mb='0'>
+            Open new tab
+          </FormLabel>
+          <Switch
+            id='new-tab-switch'
+            size='md'
+            isChecked={openInNewTab}
+            onChange={toggleOpenNewTab}
+          />
+        </FormControl>
         <IconButton
           aria-label='a'
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
