@@ -8,7 +8,11 @@ const manifest = defineManifest({
   version: '1.0.0',
   manifest_version: 3,
   description: 'Sample Chrome Extension',
-  permissions: ['bookmarks'],
+  permissions: ['bookmarks', 'contextMenus', 'tabs'],
+  background: {
+    service_worker: './src/background.ts',
+    type: 'module',
+  },
   icons: {
     '16': 'icon16.png',
     '48': 'icon48.png',
