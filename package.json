@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build"
   },
+  "packageManager": "pnpm@9.5.0",
   "devDependencies": {
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.4.9",
