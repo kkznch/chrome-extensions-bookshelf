@@ -7,10 +7,10 @@ export default defineBackground(() => {
       contexts: ['all'],
     });
 
-    chrome.contextMenus.onClicked.addListener((info, tab) => {
+    chrome.contextMenus.onClicked.addListener((info) => {
       switch (info.menuItemId) {
         case openBookShelf:
-          const homeUrl = chrome.runtime.getURL('/popup/index.html');
+          const homeUrl = chrome.runtime.getURL('/bookshelf.html');
           chrome.tabs.create({
             url: homeUrl,
           });
