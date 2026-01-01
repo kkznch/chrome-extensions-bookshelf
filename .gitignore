@@ -133,4 +133,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# WXT generated files
+.wxt/
+.output/
+
 

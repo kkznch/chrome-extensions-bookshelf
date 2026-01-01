@@ -1,12 +1,15 @@
 {
   "name": "chrome-extensions-bookshelf",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "author": "kekezun <kekexyz254288@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build"
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "wxt:prepare": "wxt prepare"
   },
   "devDependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -17,13 +20,12 @@
     "@types/node": "^18.19.130",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react": "^5.1.2",
+    "@wxt-dev/module-react": "^1.1.5",
     "framer-motion": "^9.0.1",
     "jotai": "^2.2.3",
     "react-icons": "^4.7.1",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.4",
-    "vite": "^4.5.14"
+    "typescript": "^5.9.3",
+    "wxt": "^0.20.13"
   },
   "dependencies": {
     "react": "^18.2.0",
