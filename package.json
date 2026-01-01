@@ -1,32 +1,29 @@
 {
-  "name": "template-react-for-inspection",
+  "name": "chrome-extensions-bookshelf",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "ssh://git@github.com/kkznch/template-react-for-inspection",
-  "author": "kkznch <kkznch710md@gmail.com>",
+  "author": "kekezun <kekexyz254288@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build"
   },
-  "packageManager": "pnpm@9.5.0",
   "devDependencies": {
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.4.9",
-    "@crxjs/vite-plugin": "^1.0.14",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@types/chrome": "^0.0.210",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.19.130",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^5.1.2",
     "framer-motion": "^9.0.1",
     "jotai": "^2.2.3",
     "react-icons": "^4.7.1",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
-    "vite": "^4.1.1"
+    "vite": "^4.5.14"
   },
   "dependencies": {
     "react": "^18.2.0",
