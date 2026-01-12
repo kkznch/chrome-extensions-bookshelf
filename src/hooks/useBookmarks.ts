@@ -1,4 +1,11 @@
 import { useEffect, useState } from 'react';
+import { browser } from 'wxt/browser';
+import {
+  getBookmarkBar,
+  getOtherBookmarks,
+  filterFolders,
+  filterBookmarks,
+} from '@/lib/bookmarks';
 
 export type BookMarkTreeNode = chrome.bookmarks.BookmarkTreeNode;
 
@@ -16,20 +23,18 @@ export const useBookmarks = () => {
   });
 
   useEffect(() => {
-    chrome.bookmarks.getTree().then((tree) => {
-      if (tree[0].children == null) return;
-
-      const bookmarkBar = tree[0].children[0] ?? [];
-      const otherBookmarks = tree[0].children[1] ?? [];
+    browser.bookmarks.getTree().then((tree) => {
+      const bookmarkBar = getBookmarkBar(tree);
+      const otherBookmarks = getOtherBookmarks(tree);
 
       setBookmarks({
-        bookmarkBarBookmarks: {
-          ...bookmarkBar,
-          children:
-            bookmarkBar.children?.filter((item) => item.children == null) ?? [],
-        },
-        bookmarkBarFolders:
-          bookmarkBar.children?.filter((item) => item.children != null) ?? [],
+        bookmarkBarBookmarks: bookmarkBar
+          ? {
+              ...bookmarkBar,
+              children: filterBookmarks(bookmarkBar.children),
+            }
+          : null,
+        bookmarkBarFolders: filterFolders(bookmarkBar?.children),
         otherBookmarks,
       });
     });

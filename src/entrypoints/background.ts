@@ -1,6 +1,8 @@
+import { browser } from 'wxt/browser';
+
 export default defineBackground(() => {
-  chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
+  browser.runtime.onInstalled.addListener(() => {
+    browser.contextMenus.create({
       id: 'open-book-shelf',
       title: 'Open book shelf',
       type: 'normal',
@@ -8,10 +10,10 @@ export default defineBackground(() => {
     });
   });
 
-  chrome.contextMenus.onClicked.addListener((info) => {
+  browser.contextMenus.onClicked.addListener((info) => {
     if (info.menuItemId === 'open-book-shelf') {
-      const homeUrl = chrome.runtime.getURL('/bookshelf.html');
-      chrome.tabs.create({
+      const homeUrl = browser.runtime.getURL('/bookshelf.html');
+      browser.tabs.create({
         url: homeUrl,
       });
     }
