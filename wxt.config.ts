@@ -13,6 +13,13 @@ export default defineConfig({
       '48': '/icon48.png',
       '128': '/icon128.png',
     },
+    browser_specific_settings: {
+      gecko: {
+        data_collection_permissions: {
+          required: ['bookmarksInfo'],
+        },
+      },
+    },
   },
   vite: () => ({
     resolve: {
