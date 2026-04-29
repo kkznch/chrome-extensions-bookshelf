@@ -41,15 +41,63 @@ npm run dev
 
 ### Build
 
-本番用にビルド:
+本番用にビルド (Chrome向け):
 ```sh
-npm run build
+npm run build:chrome
 ```
 
-拡張機能のzipファイルを生成:
+本番用にビルド (Firefox向け):
 ```sh
-npm run zip
+npm run build:firefox
 ```
+
+拡張機能のzipファイルを生成 (Chrome向け):
+```sh
+npm run zip:chrome
+```
+
+拡張機能のzipファイルを生成 (Firefox向け):
+```sh
+npm run zip:firefox
+```
+
+ビルド成果物の出力先:
+- Chrome: `.output/chrome-mv3/`
+- Firefox: `.output/firefox-mv2/`
+
+## Firefoxアドオン提出 (Mozilla審査用)
+
+このプロジェクトはバンドラ (Vite/Rollup) とミニファイア (esbuild) を使用しているため、 [addons.mozilla.org](https://addons.mozilla.org) への提出時にはソースコードの添付が必要。
+
+### ビルド環境
+
+- Node.js: v25.6.1 (mise管理、 [mise.toml](./mise.toml) 参照)
+- npm: v11.9.0
+- OS: macOS (Darwin) で動作確認
+
+### 提出用zipの生成
+
+`npm run zip:firefox` を実行すると、 `.output/` 配下に以下2つのzipが生成される:
+
+- `chrome-extensions-bookshelf-<version>-firefox.zip` — 拡張機能本体 (AMOへのアップロード用)
+- `chrome-extensions-bookshelf-<version>-sources.zip` — ソースコード (Mozillaレビュアー提出用)
+
+```sh
+npm run zip:firefox
+```
+
+### Mozillaレビュアー向けビルド手順
+
+1. Node.js を上記バージョンでインストール
+2. 依存関係をインストール
+    ```sh
+    npm install
+    ```
+3. Firefox向けにビルド
+    ```sh
+    npm run build:firefox
+    ```
+4. 成果物は `.output/firefox-mv2/` に出力される
 
 ## Project Structure
 
